@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.Extensions;
+using tab;
 
 namespace tabscomponent
 {
@@ -42,7 +43,7 @@ namespace tabscomponent
             Console.Write("--- add mvc service and set version ---- \n ");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
-            Console.Write( " ----- setting database ---- \n ");
+            Console.Write(" ----- setting database ---- \n ");
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,18 +66,15 @@ namespace tabscomponent
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
+
             app.UseMvc(routes =>
             {
-
                 Console.Write(" ---- setting up the routes ----- \n ");
-
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
-
-                routes.MapRoute(name:"tab",template:"{controller=Tab}/{action=Index}/{id?}");
-                
+                Dashboard tab = new Dashboard();
+                tab.injectTabRoute(routes);
             });
+
         }
+
     }
 }

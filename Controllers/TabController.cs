@@ -19,12 +19,12 @@ namespace tabscomponent.Controllers
 
         public IActionResult Index()
         {
-            // var value = "Tab-Api";
+            var value = "Tab-Api";
             
             // return View();
             // To return other then IActionResult 
-            // return Content(value);
-            return Ok(Response);
+            return Content(value);
+            return Ok();
         }
 
         public IActionResult About()
