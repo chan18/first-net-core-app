@@ -13,7 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.Extensions;
-using tab;
+using Tab;
 
 namespace tabscomponent
 {
@@ -66,12 +66,11 @@ namespace tabscomponent
             app.UseStaticFiles();
             app.UseCookiePolicy();
 
-
             app.UseMvc(routes =>
             {
                 Console.Write(" ---- setting up the routes ----- \n ");
                 Dashboard tab = new Dashboard();
-                tab.injectTabRoute(routes);
+                tab.injectTabRoutes(routes);
             });
 
         }
