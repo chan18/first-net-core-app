@@ -3,12 +3,9 @@ using Tab;
 using Home;
 
 namespace MainRoute {
-    class Route{
-
+    class Route {
         public void inject() {
-            
         }
-
     }
 
 }

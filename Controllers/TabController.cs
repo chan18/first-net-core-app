@@ -10,7 +10,6 @@ namespace tabscomponent.Controllers
 {
     public class TabController : Controller
     {
-        [HttpGet("tab/string")]
         public String stringType() 
         {
             return "string-data";
@@ -24,9 +23,10 @@ namespace tabscomponent.Controllers
             // return View();
             // To return other then IActionResult 
             return Content(value);
-            return Ok();
+            // return Ok();
         }
 
+        [HttpGet("tab/about-thing")]
         public IActionResult About()
         {
             ViewData["Message"] = "Your application description page.";

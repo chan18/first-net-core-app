@@ -14,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.Extensions;
 using Tab;
+using CustomRoutes;
 
 namespace tabscomponent
 {
@@ -43,6 +44,8 @@ namespace tabscomponent
             Console.Write("--- add mvc service and set version ---- \n ");
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
+            // services.AddScoped<ICustomRoutesDashBoards,Dashboard>();
+
             Console.Write(" ----- setting database ---- \n ");
         }
 
@@ -68,9 +71,13 @@ namespace tabscomponent
 
             app.UseMvc(routes =>
             {
-                Console.Write(" ---- setting up the routes ----- \n ");
-                Dashboard tab = new Dashboard();
-                tab.injectTabRoutes(routes);
+                // Console.Write(" ---- setting up the routes ----- \n ");
+                routes.MapRoute(
+                    name: "default",
+                    template: "{Home}/{index}/{id?}",
+                    defaults: new { controller = "Home", action = "index"}
+                );
+
             });
 
         }
